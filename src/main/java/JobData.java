@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -99,7 +96,40 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+
+        ArrayList<HashMap<String,String>> jobs = new ArrayList<>();
+        ArrayList<HashMap<String, String>> selectedJobs = new ArrayList<>();
+
+        for (int index = 0; index < jobs.size(); index ++) {
+            for (Map.Entry<String, String> job : jobs.get(index).entrySet()) {
+                if (job.getKey().toLowerCase().contains(value.toLowerCase())) {
+                    if (!selectedJobs.contains(job)) {
+                        selectedJobs.add((HashMap<String, String>) job);
+                    }
+
+                }
+            }
+        }
+
+//The code that you write should not contain duplicate jobs.
+
+//You’ll need to call findByValue from somewhere in main. We’ll leave it up to you to find where. You might have
+// noticed that when you try to search all columns using the app, a message is printed, so that is a good clue to help
+// you find where to place this new method call. Once you find where to call your new method, you can Run the program
+// again to test your code.
+
+        //TODO
+        //loop through each job and see if it contains the search term
+
+        //TODO:
+        //to make sure there are no duplicates, check if the second arrayList contains the job before putting the job
+        //into the new arrayList.
+
+        //TODO:
+        //read findByColumnAndValue, which will look similar to my finished code in some ways
+
+
+        return selectedJobs;
     }
 
     /**

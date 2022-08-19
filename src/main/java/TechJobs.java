@@ -135,14 +135,10 @@ public class TechJobs {
         } else {
             System.out.println("No Results");
         }
-
-        //Tip
-        //To do this, you’ll need to iterate over an ArrayList of jobs. Each job is itself a HashMap. While you can get
-        //each of the items out of the HashMap using the known keys (employer, location, etc.), think instead about
-        // creating a nested loop to loop over each HashMap. If a new field is added to the job records, this approach
-        // will print out the new field without any updates to printJobs.
     }
 }
+
+
 
 //Write the code for the task, verifying manually that it works by running the TechJobs.main method.
 //When you think you’ve completed a task, run the individual test that corresponds to the task.
@@ -155,7 +151,7 @@ public class TechJobs {
 //
 //If there are no results, it should print No Results. Again, you should use this exact message.
 //
-//*****
+//        *****
 //        position type: Web - Back End
 //        name: Ruby specialist
 //        employer: LaunchCode
