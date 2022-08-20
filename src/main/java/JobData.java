@@ -97,17 +97,21 @@ public class JobData {
 
         // TODO - implement this method
 
-        ArrayList<HashMap<String,String>> jobs = new ArrayList<>();
         ArrayList<HashMap<String, String>> selectedJobs = new ArrayList<>();
 
-        for (int index = 0; index < jobs.size(); index ++) {
-            for (Map.Entry<String, String> job : jobs.get(index).entrySet()) {
-                if (job.getKey().toLowerCase().contains(value.toLowerCase())) {
-                    if (!selectedJobs.contains(job)) {
-                        selectedJobs.add((HashMap<String, String>) job);
+        for (HashMap<String, String> job : allJobs) { //for each job in all jobs
+            for (Map.Entry<String, String> jobs : allJobs.get(allJobs.indexOf(job)).entrySet()) { //loop through the job hashmap
+                if (jobs.getKey().contains(value)) { //if the hashmap keys contain the value
+                    if (!selectedJobs.contains(job)) { //check if the selectedJobs arrayList contains the search term
+                        selectedJobs.add(allJobs.get(allJobs.indexOf(job))); //if it doesn't, add the job to that arraylist
+
                     }
 
-                }
+                } else if (jobs.getValue().contains(value)) { //if the hashmap values contain the value
+                    if (!selectedJobs.contains(job)) { //check if the selectedJobs arrayList contains the search term
+                        selectedJobs.add(allJobs.get(allJobs.indexOf(job))); //if it doesn't, add the job to that arraylist
+                    }
+                    }
             }
         }
 
