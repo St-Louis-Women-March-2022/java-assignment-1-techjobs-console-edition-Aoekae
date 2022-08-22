@@ -124,13 +124,13 @@ public class TechJobs {
         if (someJobs.size() > 0) {
 
             for (int index = 0; index < someJobs.size(); index++) {
-                System.out.println("*****");
+                System.out.println("\n*****");
                 for (Map.Entry<String, String> jobs : someJobs.get(index).entrySet()) {
 
                     System.out.println(jobs.getKey() + ": " + jobs.getValue());
 
                 }
-                System.out.println("*****\n");
+                System.out.println("*****");
             }
         } else {
             System.out.println("No Results");
