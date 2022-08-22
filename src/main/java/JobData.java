@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -78,8 +75,9 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            String lowercaseValue = aValue.toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (lowercaseValue.contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -98,8 +96,18 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> selectedJobs = new ArrayList<>();
+
+        for (HashMap<String, String> job : allJobs) { //for each job in all jobs
+            for (Map.Entry<String, String> jobs : allJobs.get(allJobs.indexOf(job)).entrySet()) { //loop through the job hashmap
+                if (jobs.getValue().toLowerCase().contains(value.toLowerCase())) { //if the hashmap values contain the value
+                    if (!selectedJobs.contains(job)) { //check if the selectedJobs arrayList contains the search term
+                        selectedJobs.add(allJobs.get(allJobs.indexOf(job))); //if it doesn't, add the job to that arraylist
+                    }
+                }
+            }
+        }
+        return selectedJobs;
     }
 
     /**
